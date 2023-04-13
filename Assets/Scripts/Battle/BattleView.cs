@@ -39,8 +39,8 @@ public class BattleView : MonoBehaviour
             .Subscribe(num =>
                 {
                     kingObj.sprite = kingStand[num];
-                    kingsFuda.SetActive(true);
                     kingsFuda.GetComponent<SpriteRenderer>().sprite = kingStatus[king];
+                    kingsFuda.SetActive(true);
                 }
             ).AddTo(this);
         winSubject
