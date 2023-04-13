@@ -152,7 +152,7 @@ Transform:
   m_Children:
   - {fileID: 1782667920}
   m_Father: {fileID: 919762030}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &133218250
 GameObject:
@@ -478,7 +478,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &788967509
 Transform:
   m_ObjectHideFlags: 0
@@ -493,7 +493,7 @@ Transform:
   - {fileID: 932177217}
   - {fileID: 181048294}
   m_Father: {fileID: 919762030}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &788984683
 GameObject:
@@ -876,8 +876,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 788984684}
-  - {fileID: 41678013}
   - {fileID: 788967509}
+  - {fileID: 41678013}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1592,7 +1592,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b52bbd903f93f9e49a19dc7fe7082b94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  battleUI: {fileID: 788967508}
   kingsFuda: {fileID: 1862791375}
   selectStatus:
   - {fileID: 21300000, guid: 5fad0e7c4e854ba4ba39e3a537305587, type: 3}

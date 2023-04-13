@@ -6,8 +6,6 @@ using UniRx;
 
 public class BattleView : MonoBehaviour
 {
-    //battleのUI
-    [SerializeField] private GameObject battleUI;
     //王様の札
     [SerializeField] private GameObject kingsFuda;
     //左下に出る選んだ自分の手
@@ -29,9 +27,10 @@ public class BattleView : MonoBehaviour
     //王様のオブジェクトの画像
     [SerializeField] private SpriteRenderer kingObj;
     
+    //結果を表示するメソッド
     public void DisplayResult(int player, int king, int result, int winNum)
     {
-        Debug.Log(king);
+        //UniRxで時間差で表示するように
         var kingSubject = new Subject<int>();
         var winSubject = new Subject<int>();
         kingSubject
@@ -51,7 +50,6 @@ public class BattleView : MonoBehaviour
                 }
             ).AddTo(this);
             
-        battleUI.SetActive(true);
         select.sprite = selectStatus[player];
         select.DOFade(1.0f, 0.5f);
         you.DOFade(1.0f, 0.3f);
@@ -59,6 +57,27 @@ public class BattleView : MonoBehaviour
         wins.DOFade(1.0f, 0.5f);
         kingSubject.OnNext(result);
         winSubject.OnNext(winNum);
+        CloseDisPlay();
+    }
+
+    //元に戻すメソッド(見えなくする)
+    private void CloseDisPlay()
+    {
+        var closeSubject = new Subject<int>();
+        var inactiveSubject = new Subject<int>();
+        closeSubject
+            .Delay(TimeSpan.FromSeconds(3.5f))
+            .Subscribe(_ =>
+                {
+                    select.DOFade(0.0f, 0.5f);
+                    you.DOFade(0.0f, 0.3f);
+                    winBoard.DOFade(0.0f, 0.5f);
+                    wins.DOFade(0.0f, 0.5f);
+                    kingObj.sprite = kingStand[3];
+                    kingsFuda.SetActive(false);
+                }
+            ).AddTo(this);
+        closeSubject.OnNext(0);
     }
     
 }
