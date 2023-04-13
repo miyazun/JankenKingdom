@@ -10,6 +10,7 @@ namespace King
             DecideStatus();
         }
 
+        //ランダムに出す手を決定するメドッド
         private void DecideStatus()
         {
             SetStatus(UnityEngine.Random.Range(0, 4));
