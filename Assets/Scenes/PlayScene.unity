@@ -1580,6 +1580,7 @@ MonoBehaviour:
   king: {fileID: 2141377398}
   player: {fileID: 2068334337}
   _battleView: {fileID: 1937048871}
+  _playerStatusController: {fileID: 2068334339}
 --- !u!114 &1937048871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1592,6 +1593,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b52bbd903f93f9e49a19dc7fe7082b94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  act:
+    value: 0
   kingsFuda: {fileID: 1862791375}
   selectStatus:
   - {fileID: 21300000, guid: 5fad0e7c4e854ba4ba39e3a537305587, type: 3}

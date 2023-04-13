@@ -1,5 +1,6 @@
 using King;
 using Player;
+using UniRx;
 using UnityEngine;
 
 public class BattleResult : MonoBehaviour
@@ -13,9 +14,13 @@ public class BattleResult : MonoBehaviour
     [SerializeField] private PlayerStatusModel player;
     //結果を表示するview
     [SerializeField] private BattleView _battleView;
+    [SerializeField] private PlayerStatusController _playerStatusController;
 
     private void Start()
     {
+        _battleView.act
+            .Where(active => !active)
+            .Subscribe(_ => _playerStatusController.FudaUI()).AddTo(this);
         turn = 0;
         win = 0;
     }

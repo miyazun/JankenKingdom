@@ -6,6 +6,7 @@ using UniRx;
 
 public class BattleView : MonoBehaviour
 {
+    public ReactiveProperty<bool> act = new ReactiveProperty<bool>(false);
     //王様の札
     [SerializeField] private GameObject kingsFuda;
     //左下に出る選んだ自分の手
@@ -30,6 +31,7 @@ public class BattleView : MonoBehaviour
     //結果を表示するメソッド
     public void DisplayResult(int player, int king, int result, int winNum)
     {
+        act.Value = true;
         //UniRxで時間差で表示するように
         var kingSubject = new Subject<int>();
         var winSubject = new Subject<int>();
@@ -72,7 +74,7 @@ public class BattleView : MonoBehaviour
                     select.DOFade(0.0f, 0.5f);
                     you.DOFade(0.0f, 0.3f);
                     winBoard.DOFade(0.0f, 0.5f);
-                    wins.DOFade(0.0f, 0.5f);
+                    wins.DOFade(0.0f, 0.5f).OnComplete(() => act.Value = false);
                     kingObj.sprite = kingStand[3];
                     kingsFuda.SetActive(false);
                 }
