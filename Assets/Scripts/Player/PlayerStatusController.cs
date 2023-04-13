@@ -24,7 +24,14 @@ namespace Player
 
         public void FudaUI(int num)
         {
-            playerView.OpenUI(num);
+            if (num >= 3)
+            {
+                Debug.Log("aaa");
+            }
+            else
+            {
+                playerView.OpenUI(num);
+            }
         }
 
     }
