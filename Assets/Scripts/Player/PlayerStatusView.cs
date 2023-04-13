@@ -17,6 +17,7 @@ namespace Player
         public void ChnageStatus(int select)
         {
             selectStatus.Value = select;
+            Debug.Log("aa");
         }
     
     }

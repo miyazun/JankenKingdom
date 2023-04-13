@@ -5,8 +5,10 @@ namespace Player
 {
     public class PlayerStatusController : MonoBehaviour
     {
+        [SerializeField]
         private PlayerStatusModel playerModel;
 
+        [SerializeField]
         private PlayerStatusView playerView;
         void Start()
         {
