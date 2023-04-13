@@ -22,9 +22,9 @@ namespace Player
                 .Subscribe(_ => battleResult.WinnerCheck()).AddTo(this);
         }
 
-        public void FudaUI()
+        public void FudaUI(int num)
         {
-            playerView.OpenUI();
+            playerView.OpenUI(num);
         }
 
     }

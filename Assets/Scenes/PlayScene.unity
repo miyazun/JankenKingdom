@@ -1244,6 +1244,11 @@ MonoBehaviour:
     value: 1
   fuda: {fileID: 1782667919}
   black: {fileID: 788984685}
+  playNumtext: {fileID: 1130556082}
+  numText:
+  - {fileID: 21300000, guid: f501f1022badc39468b8742b7001e4c6, type: 3}
+  - {fileID: 21300000, guid: fdea9557e1e071041a9a4fc1a9385b2d, type: 3}
+  - {fileID: 21300000, guid: f2708e2140b01e74e98a61ba40a24164, type: 3}
 --- !u!1 &1809748691
 GameObject:
   m_ObjectHideFlags: 0

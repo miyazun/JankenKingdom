@@ -68,7 +68,7 @@ public class BattleView : MonoBehaviour
         var closeSubject = new Subject<int>();
         var inactiveSubject = new Subject<int>();
         closeSubject
-            .Delay(TimeSpan.FromSeconds(3.5f))
+            .Delay(TimeSpan.FromSeconds(3.0f))
             .Subscribe(_ =>
                 {
                     select.DOFade(0.0f, 0.5f);

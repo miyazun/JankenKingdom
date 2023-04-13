@@ -20,7 +20,7 @@ public class BattleResult : MonoBehaviour
     {
         _battleView.act
             .Where(active => !active)
-            .Subscribe(_ => _playerStatusController.FudaUI()).AddTo(this);
+            .Subscribe(_ => _playerStatusController.FudaUI(turn)).AddTo(this);
         turn = 0;
         win = 0;
     }

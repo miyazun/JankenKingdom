@@ -11,6 +11,8 @@ namespace Player
         public ReactiveProperty<bool> activeUI = new ReactiveProperty<bool>(true);
         [SerializeField] private GameObject fuda;
         [SerializeField] private Image black;
+        [SerializeField] private Image playNumtext;
+        [SerializeField] private Sprite[] numText;
 
         void Start()
         {
@@ -37,8 +39,9 @@ namespace Player
         }
 
         //選択のUIを元に戻す
-        public void OpenUI()
+        public void OpenUI(int num)
         {
+            playNumtext.sprite = numText[num];
             fuda.transform.DOLocalMoveY(1.0f, 0.2f);
             black.DOFade(0.5f, 0.2f);
             activeUI.Value = true;
