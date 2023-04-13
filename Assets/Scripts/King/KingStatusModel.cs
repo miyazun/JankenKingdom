@@ -9,7 +9,7 @@ namespace King
         //ランダムに出す手を決定するメドッド
         public int DecideStatus()
         {
-            SetStatus(UnityEngine.Random.Range(0, 4));
+            SetStatus(UnityEngine.Random.Range(0, 3));
             return ReturnStatus();
         }
     }

@@ -1,8 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
+using UniRx;
 
 public class BattleView : MonoBehaviour
 {
@@ -17,7 +17,7 @@ public class BattleView : MonoBehaviour
     //王様の持つ札
     [SerializeField] private Sprite[] kingStatus;
     //数字の画像
-    [SerializeField] private Sprite[] num;
+    [SerializeField] private Sprite[] nums;
     //左下の手の欄
     [SerializeField] private Image select;
     //あなたと書かれたribbon
@@ -28,14 +28,37 @@ public class BattleView : MonoBehaviour
     [SerializeField] private Image wins;
     //王様のオブジェクトの画像
     [SerializeField] private SpriteRenderer kingObj;
-
+    
     public void DisplayResult(int player, int king, int result, int winNum)
     {
+        Debug.Log(king);
+        var kingSubject = new Subject<int>();
+        var winSubject = new Subject<int>();
+        kingSubject
+            .Delay(TimeSpan.FromSeconds(1))
+            .Subscribe(num =>
+                {
+                    kingObj.sprite = kingStand[num];
+                    kingsFuda.SetActive(true);
+                    kingsFuda.GetComponent<SpriteRenderer>().sprite = kingStatus[king];
+                }
+            ).AddTo(this);
+        winSubject
+            .Delay(TimeSpan.FromSeconds(1))
+            .Subscribe(num =>
+                {
+                    wins.sprite = nums[winNum];
+                }
+            ).AddTo(this);
+            
         battleUI.SetActive(true);
         select.sprite = selectStatus[player];
         select.DOFade(1.0f, 0.5f);
         you.DOFade(1.0f, 0.3f);
         winBoard.DOFade(1.0f, 0.5f);
         wins.DOFade(1.0f, 0.5f);
+        kingSubject.OnNext(result);
+        winSubject.OnNext(winNum);
     }
+    
 }
