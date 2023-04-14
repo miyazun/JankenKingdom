@@ -8,7 +8,7 @@ namespace Player
     public class PlayerStatusView : MonoBehaviour
     {
         public ReactiveProperty<int> selectStatus = new ReactiveProperty<int>(0);
-        public ReactiveProperty<bool> activeUI = new ReactiveProperty<bool>(true);
+        public ReactiveProperty<bool> activeUI = new ReactiveProperty<bool>(false);
         [SerializeField] private GameObject fuda;
         [SerializeField] private Image black;
         [SerializeField] private Image playNumtext;
@@ -17,7 +17,7 @@ namespace Player
 
         void Start()
         {
-            selectStatus.Value = 0;
+            //selectStatus.Value = 0;
         }
         
         //選択肢を変える
@@ -43,6 +43,7 @@ namespace Player
         //選択のUIを元に戻す
         public void OpenUI(int num)
         {
+            Debug.Log("aaa");
             playNumtext.sprite = numText[num];
             fuda.transform.DOLocalMoveY(1.0f, 0.2f);
             selecter.DOFade(1.0f, 0.1f);
