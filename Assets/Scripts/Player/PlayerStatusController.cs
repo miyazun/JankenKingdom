@@ -11,12 +11,17 @@ namespace Player
         [SerializeField] private PlayerStatusView playerView;
         //対戦結果のモデル
         [SerializeField] private BattleResult battleResult;
+        [SerializeField] private Selecter selecter;
         
         void Start()
         {
             //viewの選択が変わったらmodelに移す
             playerView.selectStatus
-                .Subscribe(num => playerModel.SetStatus(num)).AddTo(this);
+                .Subscribe(num =>
+                {
+                    playerModel.SetStatus(num);
+                    selecter.MoveSelecter(num);
+                }).AddTo(this);
             playerView.activeUI
                 .Where(active => !active)
                 .Subscribe(_ => battleResult.WinnerCheck()).AddTo(this);

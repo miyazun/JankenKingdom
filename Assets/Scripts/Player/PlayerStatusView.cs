@@ -12,6 +12,7 @@ namespace Player
         [SerializeField] private GameObject fuda;
         [SerializeField] private Image black;
         [SerializeField] private Image playNumtext;
+        [SerializeField] private Image selecter;
         [SerializeField] private Sprite[] numText;
 
         void Start()
@@ -34,6 +35,7 @@ namespace Player
         private void CloseUI()
         {
             fuda.transform.DOLocalMoveY(-3.5f, 0.2f);
+            selecter.DOFade(0.0f, 0.2f);
             black.DOFade(0.0f, 0.2f);
             activeUI.Value = false;
         }
@@ -43,6 +45,7 @@ namespace Player
         {
             playNumtext.sprite = numText[num];
             fuda.transform.DOLocalMoveY(1.0f, 0.2f);
+            selecter.DOFade(1.0f, 0.1f);
             black.DOFade(0.5f, 0.2f);
             activeUI.Value = true;
         }
