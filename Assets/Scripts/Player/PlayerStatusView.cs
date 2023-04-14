@@ -17,7 +17,7 @@ namespace Player
 
         void Start()
         {
-            //selectStatus.Value = 0;
+            selectStatus.Value = 0;
         }
         
         //選択肢を変える
