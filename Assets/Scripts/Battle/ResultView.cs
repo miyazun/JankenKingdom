@@ -13,7 +13,7 @@ public class ResultView : MonoBehaviour
     public void DisplatResult(int win)
     {
         board.GetComponent<Image>().sprite = resultBoard[win];
-        board.transform.DOScale(new Vector2(1f, 1f), 0.5f);
+        board.transform.DOMove(new Vector2(0f, 0f), 0.5f).SetEase(Ease.OutBounce);
         
     }
 }
