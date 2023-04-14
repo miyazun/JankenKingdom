@@ -26,7 +26,7 @@ namespace Player
         {
             if (num >= 3)
             {
-                Debug.Log("aaa");
+                battleResult.ResultCheck();
             }
             else
             {

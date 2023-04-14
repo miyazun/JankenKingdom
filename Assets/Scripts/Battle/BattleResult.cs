@@ -15,6 +15,7 @@ public class BattleResult : MonoBehaviour
     //結果を表示するview
     [SerializeField] private BattleView _battleView;
     [SerializeField] private PlayerStatusController _playerStatusController;
+    [SerializeField] private ResultView _resultView;
 
     private void Start()
     {
@@ -45,5 +46,10 @@ public class BattleResult : MonoBehaviour
         win += winNum(result);
         _battleView.DisplayResult(player.ReturnStatus(), king.ReturnStatus(), result, win);
         turn++;
+    }
+
+    public void ResultCheck()
+    {
+        _resultView.DisplatResult(win);
     }
 }
