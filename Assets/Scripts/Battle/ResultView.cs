@@ -1,4 +1,3 @@
-using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,7 +5,9 @@ using UnityEngine.UI;
 public class ResultView : MonoBehaviour
 {
     [SerializeField] private GameObject board;
+    [SerializeField] private SceneChanger scene;
     [SerializeField] private Sprite[] resultBoard;
+    [SerializeField] private Image white;
     [SerializeField] private GameObject[] items;
     private ItemModel _itemModel;
 
@@ -24,7 +25,14 @@ public class ResultView : MonoBehaviour
         {
             CheckItem();
         }
-        board.transform.DOMove(new Vector2(0f, 0f), 0.5f).SetEase(Ease.OutBounce);
+        board.transform.DOMove(new Vector2(0f, 0f), 0.5f).SetEase(Ease.OutBounce)
+            .OnComplete(() => FadeChnage());
+    }
+
+    public void FadeChnage()
+    {
+        gameObject.GetComponent<Image>().DOFade(0.0f, 4.0f);
+        white.DOFade(1.0f, 4.0f).OnComplete(() => scene.ChnageScene("Title"));
     }
 
     private void CheckItem()
