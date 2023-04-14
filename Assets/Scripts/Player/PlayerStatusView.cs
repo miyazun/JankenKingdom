@@ -43,7 +43,6 @@ namespace Player
         //選択のUIを元に戻す
         public void OpenUI(int num)
         {
-            Debug.Log("aaa");
             playNumtext.sprite = numText[num];
             fuda.transform.DOLocalMoveY(1.0f, 0.2f);
             selecter.DOFade(1.0f, 0.1f);
